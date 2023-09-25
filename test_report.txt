@@ -18,21 +18,26 @@ PASS src/arrays.test.ts
 
       at Object.<anonymous> (src/arrays.ts:139:9)
 
+PASS src/objects.test.ts
 PASS src/HtmlCss.test.tsx
 PASS src/functions.test.ts
 PASS src/text.test.tsx
 PASS src/App.test.tsx
---------------|---------|----------|---------|---------|-------------------
-File          | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
---------------|---------|----------|---------|---------|-------------------
-All files     |   98.63 |      100 |     100 |   98.55 |                   
- App.tsx      |     100 |      100 |     100 |     100 |                   
- arrays.ts    |   98.03 |      100 |     100 |   97.87 | 16                
- functions.ts |     100 |      100 |     100 |     100 |                   
---------------|---------|----------|---------|---------|-------------------
+----------------|---------|----------|---------|---------|-------------------
+File            | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+----------------|---------|----------|---------|---------|-------------------
+All files       |   98.01 |    96.87 |     100 |   97.93 |                   
+ src            |   98.01 |    96.87 |     100 |   97.93 |                   
+  App.tsx       |     100 |      100 |     100 |     100 |                   
+  arrays.ts     |   98.03 |      100 |     100 |   97.87 | 16                
+  functions.ts  |     100 |      100 |     100 |     100 |                   
+  objects.ts    |   96.42 |     87.5 |     100 |   96.42 | 152               
+ src/interfaces |       0 |        0 |       0 |       0 |                   
+  question.ts   |       0 |        0 |       0 |       0 |                   
+----------------|---------|----------|---------|---------|-------------------
 
-Test Suites: 5 passed, 5 total
-Tests:       23 passed, 23 total
+Test Suites: 6 passed, 6 total
+Tests:       33 passed, 33 total
 Snapshots:   0 total
-Time:        4.003 s
+Time:        4.273 s
 Ran all test suites.
