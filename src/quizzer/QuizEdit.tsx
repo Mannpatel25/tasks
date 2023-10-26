@@ -12,13 +12,20 @@ export const QuizEdit = ({
     deleteQuiz,
     switchEdit,
     resetView
-}: {) => {
+}: {
+    quiz: Quiz;
+    editQuiz: (quizId: number, quiz:Quiz) => void;
+    deleteQuiz: (quizId:number) => void;
+    switchEdit: () => void;
+    resetView: () => void;
+}) => {
     const [newQuiz, setNewQuiz] = useState<Quiz>({ ...quiz });
 
     const editQuestion = (questionId: number, newQuestion: Question) => {
         setNewQuiz({
             ...newQuiz,
             questionList: newQuiz.questionList.map(
+                (question:Question): Question => question.id === questionId ? newQuestion : question
             )
         });
     };
@@ -27,6 +34,7 @@ export const QuizEdit = ({
         setNewQuiz({
             ...newQuiz,
             questionList: newQuiz.questionList.filter(
+                (question:Question):  boolean => question.id !== questionId
             )
         });
     };
@@ -42,7 +50,7 @@ export const QuizEdit = ({
                 (q: Question, idx: number): Question => {
                     if (idx === idx1) return newQuiz.questionList[idx2];
                     if (idx === idx2) return newQuiz.questionList[idx1];
-                    return;
+                    return q;
                 }
             )
         });
@@ -67,7 +75,7 @@ export const QuizEdit = ({
                                 }
                             ></Form.Control>
                         </div>
-                        <Form.Check
+                        <Form.Check 
                             className="published_check"
                             type="checkbox"
                             id="is-published_check"
@@ -79,7 +87,7 @@ export const QuizEdit = ({
                             ) => {
                                 setNewQuiz({
                                     ...newQuiz,
-                                    published: 
+                                    published: e.target.checked
                                 });
                             }}
                         ></Form.Check>

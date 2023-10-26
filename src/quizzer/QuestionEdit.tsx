@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Question, QuestionType } from "../interfaces/question";
+import { Question} from "../interfaces/question";
+import {Form, Button} from "react-bootstrap";
 
 import "./QuestionEdit.css";
 
@@ -10,7 +11,13 @@ export const QuestionEdit = ({
     editQuestion,
     removeQuestion,
     swapQuestion
-}: {}) => {
+}: {index:number;
+     lastIndex: number;
+      question:Question;
+       editQuestion: (questionId: number, newQuestion: Question) => void;
+       removeQuestion: (questionId: number) => void;
+       swapQuestion: (questionId: number, swapId: number) => void;
+    }) => {
     const [a, b] = useState<number>(
         question.options.findIndex((s: string) => question.expected === s)
     );
@@ -27,11 +34,11 @@ export const QuestionEdit = ({
         });
     };
 
-    const switchMulti = () => {
+    const switchMulti = (e: React.ChangeEvent<HTMLSelectElement>) => {
         b(0);
         editQuestion(question.id, {
             ...question,
-            type: "multiple_choice_question",
+            type: e.target.value === "multiple_choice_question" ? "multiple_choice_question" : "short_answer_question",
             expected: "Example Answer",
             options: Array(3).fill("Example Answer")
         });
@@ -111,7 +118,7 @@ export const QuestionEdit = ({
                                 <Form.Select
                                     className="type_dropdown"
                                     value={question.type}
-                                    onChange={handleSwitch}
+                                    onChange={switchMulti}
                                 >
                                     <option
                                         data-testid={
